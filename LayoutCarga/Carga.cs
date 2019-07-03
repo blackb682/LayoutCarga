@@ -7,6 +7,8 @@ namespace LayoutCarga
 	{
 		int colCount;
 		string layout;
+		string acao;
+		char tipoCarga;
 		public Carga()
 		{
 			InitializeComponent();
@@ -22,14 +24,14 @@ namespace LayoutCarga
 		private void layout100_CheckedChanged(object sender, EventArgs e)
 		{
 			ShowClientTB();
-			agregadorTB.ReadOnly = true ;
+			agregadorTB.ReadOnly = true;
 			layout = "0100";
 		}
 
 		private void layout200_CheckedChanged(object sender, EventArgs e)
 		{
 			ShowClientTB();
-			agregadorTB.ReadOnly = true ;
+			agregadorTB.ReadOnly = true;
 			layout = "0200";
 		}
 
@@ -69,21 +71,21 @@ namespace LayoutCarga
 		private void inclusao_CheckedChanged(object sender, EventArgs e)
 		{
 			ShowFileSearch();
-
+			acao = "01";
 			ColunasInclusao();
 		}
 
 		private void limite_CheckedChanged(object sender, EventArgs e)
 		{
 			ShowFileSearch();
-
+			acao = "04";
 			colCount = 8; //Todos os layouts para limite tem 8 colunas
 		}
 
 		private void demissao_CheckedChanged(object sender, EventArgs e)
 		{
 			ShowFileSearch();
-
+			acao = "06";
 			ColunasDemissao();
 		}
 
@@ -113,7 +115,7 @@ namespace LayoutCarga
 				demissao.Show();
 
 				actionLabel.Show();
-			}			
+			}
 		}
 
 		public void ShowFileSearch()
@@ -178,33 +180,37 @@ namespace LayoutCarga
 
 		private void converterButton_Click(object sender, EventArgs e)
 		{
-			DialogResult boxButtons = new DialogResult();
 
-			boxButtons = MessageBox.Show("O arquivo foi convertido com sucesso =)\n" +
-				"Para salvá-lo clique em \"Ok\".", "Arquivo Convertido", MessageBoxButtons.OKCancel);
+			LeituraGravacao leitura = new LeituraGravacao();
+			SalvaLayout.ShowDialog();
 
-			if (boxButtons == DialogResult.OK)
-			{
-				LeituraGravacao leitura = new LeituraGravacao();
-				SalvaLayout.ShowDialog();
+			leitura.GravarArquivo(layout, Convert.ToInt32(agregadorTB.Text), acao, tipoCarga, arquivo.Text, SalvaLayout.FileName);
 
-				leitura.LerArquivo(arquivo.Text, colCount, SalvaLayout.FileName, layout, 3685, "1234", "055441", "01","I");
 
-			}
 		}
 
 		public int ColunasInclusao()
 		{
-			if(layout100.Checked)
+			if (layout100.Checked)
+			{
 				colCount = 24;
-			else if(layout200.Checked)
+			}
+			else if (layout200.Checked)
+			{
 				colCount = 25;
+			}
 			else if (layout210.Checked)
+			{
 				colCount = 27;
-			else if(layout300.Checked)
+			}
+			else if (layout300.Checked)
+			{
 				colCount = 28;
+			}
 			else
+			{
 				colCount = 15;
+			}
 
 			return colCount;
 		}
@@ -214,17 +220,23 @@ namespace LayoutCarga
 		{
 
 			if (layout200.Checked)
+			{
 				colCount = 7;
+			}
 			else if (layout210.Checked)
+			{
 				colCount = 7;
+			}
 			else if (layout300.Checked)
+			{
 				colCount = 8;
+			}
 			else
+			{
 				colCount = 7;
+			}
 
 			return colCount;
 		}
-
-
 	}
 }

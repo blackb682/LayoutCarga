@@ -52,6 +52,7 @@
     <Compile Include="Carga.Designer.cs">
       <DependentUpon>Carga.cs</DependentUpon>
     </Compile>
+    <Compile Include="Layouts.cs" />
     <Compile Include="LeituraGravacao.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
