@@ -59,6 +59,7 @@ namespace LayoutCarga
 				writer.Write("99{0}{1," + tamanhoFiller + "}" + "{2}", (rowCount + 2).ToString("000000"),
 					filler, (rowCount + 2).ToString("000000"));
 			}
+			xlWorkbook.Close();
 		}
 		public void Layout200(string source, string arquivoSalvar, int agregadorCliente, char tipoCarga)
 		{
@@ -113,6 +114,7 @@ namespace LayoutCarga
 				writer.Write("99{0}{1," + tamanhoFiller + "}" + "{2}", (rowCount + 2).ToString("000000"),
 					filler, (rowCount + 2).ToString("000000"));
 			}
+			xlWorkbook.Close();
 		}
 		public void Layout210(string source, string arquivoSalvar, int agregadorCliente, char tipoCarga)
 		{
@@ -167,6 +169,7 @@ namespace LayoutCarga
 				writer.Write("99{0}{1," + tamanhoFiller + "}" + "{2}", (rowCount + 2).ToString("000000"),
 					filler, (rowCount + 2).ToString("000000"));
 			}
+			xlWorkbook.Close();
 		}
 		public void Layout300(string source, string arquivoSalvar, int agregadorCliente, char tipoCarga)
 		{
@@ -221,6 +224,7 @@ namespace LayoutCarga
 				writer.Write("99{0}{1," + tamanhoFiller + "}" + "{2}", (rowCount + 2).ToString("000000"),
 					filler, (rowCount + 2).ToString("000000"));
 			}
+			xlWorkbook.Close();
 		}
 		public void Layout310(string source, string arquivoSalvar, int agregadorCliente, char tipoCarga)
 		{
@@ -275,6 +279,7 @@ namespace LayoutCarga
 				writer.Write("99{0}{1," + tamanhoFiller + "}" + "{2}", (rowCount + 2).ToString("000000"),
 					filler, (rowCount + 2).ToString("000000"));
 			}
+			xlWorkbook.Close();
 		}
 	}
 
@@ -333,6 +338,7 @@ namespace LayoutCarga
 				writer.Write("99{0}{1," + tamanhoFiller + "}" + "{2}", (rowCount + 2).ToString("000000"),
 					filler, (rowCount + 2).ToString("000000"));
 			}
+			xlWorkbook.Close();
 		}
 		public void Layout200(string source, string arquivoSalvar, int agregadorCliente, char tipoCarga)
 		{
@@ -387,6 +393,7 @@ namespace LayoutCarga
 				writer.Write("99{0}{1," + tamanhoFiller + "}" + "{2}", (rowCount + 2).ToString("000000"),
 					filler, (rowCount + 2).ToString("000000"));
 			}
+			xlWorkbook.Close();
 		}
 		public void Layout210(string source, string arquivoSalvar, int agregadorCliente, char tipoCarga)
 		{
@@ -441,6 +448,7 @@ namespace LayoutCarga
 				writer.Write("99{0}{1," + tamanhoFiller + "}" + "{2}", (rowCount + 2).ToString("000000"),
 					filler, (rowCount + 2).ToString("000000"));
 			}
+			xlWorkbook.Close();
 		}
 		public void Layout300(string source, string arquivoSalvar, int agregadorCliente, char tipoCarga)
 		{
@@ -495,6 +503,7 @@ namespace LayoutCarga
 				writer.Write("99{0}{1," + tamanhoFiller + "}" + "{2}", (rowCount + 2).ToString("000000"),
 					filler, (rowCount + 2).ToString("000000"));
 			}
+			xlWorkbook.Close();
 		}
 		public void Layout310(string source, string arquivoSalvar, int agregadorCliente, char tipoCarga)
 		{
@@ -549,6 +558,7 @@ namespace LayoutCarga
 				writer.Write("99{0}{1," + tamanhoFiller + "}" + "{2}", (rowCount + 2).ToString("000000"),
 					filler, (rowCount + 2).ToString("000000"));
 			}
+			xlWorkbook.Close();
 		}
 	}
 
@@ -607,6 +617,7 @@ namespace LayoutCarga
 				writer.Write("99{0}{1," + tamanhoFiller + "}" + "{2}", (rowCount + 2).ToString("000000"),
 					filler, (rowCount + 2).ToString("000000"));
 			}
+			xlWorkbook.Close();
 		}
 		public void Layout210(string source, string arquivoSalvar, int agregadorCliente, char tipoCarga)
 		{
@@ -661,6 +672,7 @@ namespace LayoutCarga
 				writer.Write("99{0}{1," + tamanhoFiller + "}" + "{2}", (rowCount + 2).ToString("000000"),
 					filler, (rowCount + 2).ToString("000000"));
 			}
+			xlWorkbook.Close();
 		}
 		public void Layout300(string source, string arquivoSalvar, int agregadorCliente, char tipoCarga)
 		{
@@ -715,6 +727,7 @@ namespace LayoutCarga
 				writer.Write("99{0}{1," + tamanhoFiller + "}" + "{2}", (rowCount + 2).ToString("000000"),
 					filler, (rowCount + 2).ToString("000000"));
 			}
+			xlWorkbook.Close();
 		}
 		public void Layout310(string source, string arquivoSalvar, int agregadorCliente, char tipoCarga)
 		{
@@ -769,6 +782,7 @@ namespace LayoutCarga
 				writer.Write("99{0}{1," + tamanhoFiller + "}" + "{2}", (rowCount + 2).ToString("000000"),
 					filler, (rowCount + 2).ToString("000000"));
 			}
+			xlWorkbook.Close();
 		}
 	}
 }

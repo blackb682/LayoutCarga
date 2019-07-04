@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using Excel = Microsoft.Office.Interop.Excel;
+﻿using Excel = Microsoft.Office.Interop.Excel;
 
 namespace LayoutCarga
 {
@@ -24,7 +22,7 @@ namespace LayoutCarga
 
 			switch (acao)
 			{
-				
+
 				case "01":
 					switch (layout)
 					{
@@ -82,17 +80,15 @@ namespace LayoutCarga
 					break;
 			}
 		}
-	
 
-
-	public string Truncate(string source, int length)
-	{
-		if (source.Length > length)
+		public string Truncate(string source, int length)
 		{
-			source = source.Substring(0, length);
+			if (source.Length > length)
+			{
+				source = source.Substring(0, length);
+			}
+			return source;
 		}
-		return source;
-	}
 
-}
+	}
 }
