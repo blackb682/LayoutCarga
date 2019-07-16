@@ -159,6 +159,10 @@
 			this.converterButton.UseVisualStyleBackColor = true;
 			this.converterButton.Click += new System.EventHandler(this.converterButton_Click);
 			// 
+			// SalvaLayout
+			// 
+			this.SalvaLayout.Filter = "Arquivos de Texto (.txt)|*.txt";
+			// 
 			// panel1
 			// 
 			this.panel1.Controls.Add(this.inclusao);

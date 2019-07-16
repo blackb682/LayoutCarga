@@ -149,9 +149,7 @@ namespace LayoutCarga
 
 			leitura.GravarArquivo(layout, Convert.ToInt32(agregadorTB.Text), acao,
 				tipoCarga, arquivo.Text, SalvaLayout.FileName);
-			Progression progression = new Progression();
 
-			progression.Show();
 			MessageBox.Show("O arquivo foi salvo com sucesso!", "Processo concluído");
 		}
 
