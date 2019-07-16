@@ -12,7 +12,6 @@ namespace LayoutCarga
 			Excel.Range xlRange = xlWorksheet.UsedRange;
 
 			int rowCount = xlRange.Rows.Count;
-
 		}
 		public void GravarArquivo(string layout, int agregadorCliente, string acao, char tipoCarga, string source, string arquivoSalvar)
 		{

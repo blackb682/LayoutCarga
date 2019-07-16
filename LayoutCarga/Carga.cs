@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace LayoutCarga
@@ -9,6 +11,8 @@ namespace LayoutCarga
 		string layout;
 		string acao;
 		char tipoCarga;
+
+
 		public Carga()
 		{
 			InitializeComponent();
@@ -17,53 +21,6 @@ namespace LayoutCarga
 		private void Carga_Load(object sender, EventArgs e)
 		{
 			HideComponents();
-		}
-
-		//Botões de Layout
-
-		private void layout100_CheckedChanged(object sender, EventArgs e)
-		{
-			ShowClientTB();
-			agregadorTB.ReadOnly = true;
-			layout = "0100";
-		}
-
-		private void layout200_CheckedChanged(object sender, EventArgs e)
-		{
-			ShowClientTB();
-			agregadorTB.ReadOnly = true;
-			layout = "0200";
-		}
-
-		private void layout210_CheckedChanged(object sender, EventArgs e)
-		{
-			ShowClientTB();
-			agregadorTB.ReadOnly = true;
-			layout = "0210";
-		}
-
-		private void layout300_CheckedChanged(object sender, EventArgs e)
-		{
-			ShowClientTB();
-			agregadorTB.ReadOnly = false;
-			layout = "0300";
-		}
-		private void layout310_CheckedChanged(object sender, EventArgs e)
-		{
-			ShowClientTB();
-			agregadorTB.ReadOnly = false;
-			layout = "0310";
-		}
-
-		//Campos de texto com os dados de agregador, cliente e benefício
-
-		private void beneficioTB_TextChanged(object sender, EventArgs e)
-		{
-			if ((agregadorTB.Text != "" && clienteTB.Text != "") ||
-				(agregadorTB.ReadOnly = true && clienteTB.Text != ""))
-			{
-				ShowActionButtons();
-			}
 		}
 
 		//Botões de ação
@@ -92,19 +49,26 @@ namespace LayoutCarga
 		public void ShowClientTB()
 		{
 			agregadorTB.Show();
-			clienteTB.Show();
-			beneficioTB.Show();
 
 			agregadorLabel.Show();
-			clienteLabel.Show();
-			beneficioLabel.Show();
+
 		}
+
+		public void ShowTypeRButtons()
+		{
+			tpCargaLabel.Show();
+			controladaRB.Show();
+			totalRB.Show();
+		}
+
 		public void ShowActionButtons()
 		{
-			if (layout100.Checked)
+			if (layoutCB.Text == "Layout 100")
 			{
 				inclusao.Show();
 				actionLabel.Show();
+				limite.Hide();
+				demissao.Hide();
 
 				inclusao.Checked = true;
 			}
@@ -130,12 +94,7 @@ namespace LayoutCarga
 		public void HideComponents()
 		{
 			agregadorTB.Hide();
-			clienteTB.Hide();
-			beneficioTB.Hide();
-
 			agregadorLabel.Hide();
-			clienteLabel.Hide();
-			beneficioLabel.Hide();
 
 			inclusao.Hide();
 			limite.Hide();
@@ -148,16 +107,20 @@ namespace LayoutCarga
 
 			procurarButton.Hide();
 			converterButton.Hide();
+
+			tpCargaLabel.Hide();
+			controladaRB.Hide();
+			totalRB.Hide();
 		}
 
-		public void UncheckLayout()
-		{
-			layout100.Checked = false;
-			layout200.Checked = false;
-			layout210.Checked = false;
-			layout300.Checked = false;
-			layout310.Checked = false;
-		}
+		//public void UncheckLayout()
+		//{
+		//	layout100.Checked = false;
+		//	layout200.Checked = false;
+		//	layout210.Checked = false;
+		//	layout300.Checked = false;
+		//	layout310.Checked = false;
+		//}
 
 		public void UncheckAction()
 		{
@@ -184,26 +147,29 @@ namespace LayoutCarga
 			LeituraGravacao leitura = new LeituraGravacao();
 			SalvaLayout.ShowDialog();
 
-			leitura.GravarArquivo(layout, Convert.ToInt32(agregadorTB.Text), acao, tipoCarga, arquivo.Text, SalvaLayout.FileName);
+			leitura.GravarArquivo(layout, Convert.ToInt32(agregadorTB.Text), acao,
+				tipoCarga, arquivo.Text, SalvaLayout.FileName);
+			Progression progression = new Progression();
 
-
+			progression.Show();
+			MessageBox.Show("O arquivo foi salvo com sucesso!", "Processo concluído");
 		}
 
 		public int ColunasInclusao()
 		{
-			if (layout100.Checked)
+			if (layoutCB.Text == "Layout 100")
 			{
 				colCount = 24;
 			}
-			else if (layout200.Checked)
+			else if (layoutCB.Text == "Layout 200")
 			{
 				colCount = 25;
 			}
-			else if (layout210.Checked)
+			else if (layoutCB.Text == "Layout 210")
 			{
 				colCount = 27;
 			}
-			else if (layout300.Checked)
+			else if (layoutCB.Text == "Layout 300")
 			{
 				colCount = 28;
 			}
@@ -219,15 +185,15 @@ namespace LayoutCarga
 		public int ColunasDemissao()
 		{
 
-			if (layout200.Checked)
+			if (layoutCB.Text == "Layout 200")
 			{
 				colCount = 7;
 			}
-			else if (layout210.Checked)
+			else if (layoutCB.Text == "Layout 210")
 			{
 				colCount = 7;
 			}
-			else if (layout300.Checked)
+			else if (layoutCB.Text == "Layout 300")
 			{
 				colCount = 8;
 			}
@@ -238,5 +204,97 @@ namespace LayoutCarga
 
 			return colCount;
 		}
+
+		private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (layoutCB.Text == "Layout 100")
+			{
+				if (tpCargaLabel.Visible)
+				{
+					ShowActionButtons();
+				}
+				else
+				{
+					ShowClientTB();
+					layout = "0100";
+					agregadorLabel.Text = "Cliente:";
+				}
+			}
+			else if (layoutCB.Text == "Layout 200")
+			{
+				if (tpCargaLabel.Visible)
+				{
+					ShowActionButtons();
+				}
+				else
+				{
+					ShowClientTB();
+					layout = "0200";
+					agregadorLabel.Text = "Cliente:";
+				}
+			}
+			else if (layoutCB.Text == "Layout 210")
+			{
+				if (tpCargaLabel.Visible)
+				{
+					ShowActionButtons();
+				}
+				else
+				{
+					ShowClientTB();
+					layout = "0210";
+					agregadorLabel.Text = "Cliente:";
+				}
+			}
+			else if (layoutCB.Text == "Layout 300")
+			{
+				if (tpCargaLabel.Visible)
+				{
+					ShowActionButtons();
+				}
+				else
+				{
+					ShowClientTB();
+					layout = "0300";
+					agregadorLabel.Text = "Agregador:";
+				}
+			}
+			else
+			{
+				if (tpCargaLabel.Visible)
+				{
+					ShowActionButtons();
+				}
+				else
+				{
+					ShowClientTB();
+					layout = "0310";
+					agregadorLabel.Text = "Agregador:";
+				}
+			}
+		}
+
+		private void agregadorTB_TextChanged(object sender, EventArgs e)
+		{
+			ShowTypeRButtons();
+		}
+
+		private void controladaRB_CheckedChanged(object sender, EventArgs e)
+		{
+			ShowActionButtons();
+			tipoCarga = 'C';
+		}
+
+		private void totalRB_CheckedChanged(object sender, EventArgs e)
+		{
+			ShowActionButtons();
+			tipoCarga = 'T';
+		}
+
+		private void progressBar1_Click(object sender, EventArgs e)
+		{
+
+		}
+
 	}
 }
