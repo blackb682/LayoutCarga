@@ -68,6 +68,7 @@ namespace LayoutCarga
 			Excel.Range xlRange = xlWorksheet.UsedRange;
 
 			int rowCount = xlRange.Rows.Count;
+			
 			using (StreamWriter writer = new StreamWriter(arquivoSalvar))
 			{
 				DateTime data = DateTime.Now;

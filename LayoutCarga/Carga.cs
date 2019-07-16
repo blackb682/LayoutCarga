@@ -1,6 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace LayoutCarga
@@ -143,14 +141,24 @@ namespace LayoutCarga
 
 		private void converterButton_Click(object sender, EventArgs e)
 		{
+			if (arquivo.Text != "")
+			{
+				LeituraGravacao leitura = new LeituraGravacao();
+				SalvaLayout.ShowDialog();
+				if (SalvaLayout.FileName != "")
+				{
+					leitura.GravarArquivo(layout, Convert.ToInt32(agregadorTB.Text), acao,
+						tipoCarga, arquivo.Text, SalvaLayout.FileName);
 
-			LeituraGravacao leitura = new LeituraGravacao();
-			SalvaLayout.ShowDialog();
+					MessageBox.Show("O arquivo foi salvo com sucesso!", "Processo concluído");
+				}
+			}
+			else
+			{
 
-			leitura.GravarArquivo(layout, Convert.ToInt32(agregadorTB.Text), acao,
-				tipoCarga, arquivo.Text, SalvaLayout.FileName);
+				MessageBox.Show("Acho que esqueceu de selecionar um arquivo para ser convertido...", "Ops... =(", MessageBoxButtons.OK);
 
-			MessageBox.Show("O arquivo foi salvo com sucesso!", "Processo concluído");
+			}
 		}
 
 		public int ColunasInclusao()
