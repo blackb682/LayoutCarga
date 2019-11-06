@@ -5,17 +5,18 @@ namespace LayoutCarga
 {
 	class ValidacaoArquivo
 	{
-		public static void ValidaArquivo(string arquivo, string layout)
+		public static string[,] ArmazenaDados(string arquivo, string layout)
 		{
 			string line;
 			string[] input;
+			string[,] arquivoFinal = { };
 			int counter = 0;
 			using (StreamReader reader = new StreamReader(arquivo))
 			{
 				while ((line = reader.ReadLine()) != null)
 				{
 					input = line.Split(';');
-					string[,] arquivoFinal = new string[counter, input.Length];
+					arquivoFinal = new string[counter, input.Length];
 					string acao = input[0];
 					int tamanhoLayout = 0;
 
@@ -46,6 +47,7 @@ namespace LayoutCarga
 					}
 				}
 			}
+			return arquivoFinal;
 		}
 
 		public static int TamanhoLayout(string layout, string acao)
@@ -147,117 +149,6 @@ namespace LayoutCarga
 					}
 				default: return layoutLength = 0;
 			}
-		}
-
-		public static string[] ValidaDados(string[] input, string layout, string acao)
-		{
-			string[] inconsistencias = input;
-
-			switch (layout)
-			{
-				case "0100":
-					break;
-				case "0200":
-					switch (acao)
-					{
-						case "01":
-
-							break;
-						case "04":
-							break;
-						case "05":
-							break;
-						case "06":
-							break;
-						case "09":
-							break;
-						case "10":
-							break;
-						default:
-							break;
-					}
-					break;
-				case "0210":
-					switch (acao)
-					{
-						case "01": return layoutLength = 27;
-						case "04": return layoutLength = 8;
-						case "05": return layoutLength = 8;
-						case "06": return layoutLength = 7;
-						case "09": return layoutLength = 6;
-						case "10": return layoutLength = 7;
-						default: return layoutLength = 0;
-					}
-				case "0220":
-					switch (acao)
-					{
-						case "01": return layoutLength = 22;
-						case "04": return layoutLength = 8;
-						case "05": return layoutLength = 7;
-						case "06": return layoutLength = 7;
-						case "09": return layoutLength = 6;
-						case "10": return layoutLength = 7;
-						default: return layoutLength = 0;
-					}
-				case "0300":
-					switch (acao)
-					{
-						case "01": return layoutLength = 28;
-						case "04": return layoutLength = 8;
-						case "05": return layoutLength = 9;
-						case "06": return layoutLength = 8;
-						case "07": return layoutLength = 8;
-						case "08": return layoutLength = 7;
-						case "09": return layoutLength = 12;
-						case "10": return layoutLength = 7;
-						default: return layoutLength = 0;
-					}
-				case "0302":
-					switch (acao)
-					{
-						case "01": return layoutLength = 28;
-						case "03": return layoutLength = 8;
-						case "04": return layoutLength = 8;
-						case "05": return layoutLength = 9;
-						case "06": return layoutLength = 8;
-						case "07": return layoutLength = 8;
-						case "08": return layoutLength = 7;
-						case "09": return layoutLength = 12;
-						case "10": return layoutLength = 8;
-						default: return layoutLength = 0;
-					}
-				case "0310":
-					switch (acao)
-					{
-						case "01": return layoutLength = 15;
-						case "02": return layoutLength = 13;
-						case "04": return layoutLength = 8;
-						case "05": return layoutLength = 8;
-						case "06": return layoutLength = 7;
-						case "07": return layoutLength = 8;
-						case "08": return layoutLength = 8;
-						case "09": return layoutLength = 8;
-						case "10": return layoutLength = 7;
-						default: return layoutLength = 0;
-					}
-				case "0320":
-					switch (acao)
-					{
-						case "01": return layoutLength = 17;
-						case "02": return layoutLength = 14;
-						case "04": return layoutLength = 10;
-						case "05": return layoutLength = 9;
-						case "06": return layoutLength = 8;
-						case "07": return layoutLength = 9;
-						case "08": return layoutLength = 9;
-						case "09": return layoutLength = 10;
-						case "10": return layoutLength = 7;
-						default: return layoutLength = 0;
-					}
-				default: return layoutLength = 0;
-			}
-
-			return inconsistencias;
 		}
 	}
 }
