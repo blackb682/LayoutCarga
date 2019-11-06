@@ -90,6 +90,7 @@
     <Compile Include="LeituraGravacao.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValidacaoArquivo.cs" />
     <EmbeddedResource Include="Carga.resx">
       <DependentUpon>Carga.cs</DependentUpon>
     </EmbeddedResource>
